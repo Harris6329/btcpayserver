@@ -65,6 +65,7 @@ namespace BTCPayServer.Data
         public DbSet<WebhookData> Webhooks { get; set; }
         public DbSet<LightningAddressData> LightningAddresses{ get; set; }
         public DbSet<PayoutProcessorData> PayoutProcessors { get; set; }
+        public DbSet<FormData> Forms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -114,6 +115,7 @@ namespace BTCPayServer.Data
             LightningAddressData.OnModelCreating(builder);
             PayoutProcessorData.OnModelCreating(builder);
             //WebhookData.OnModelCreating(builder);
+            FormData.OnModelCreating(builder, Database);
 
 
             if (Database.IsSqlite() && !_designTime)
